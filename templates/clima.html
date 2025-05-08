@@ -1,0 +1,24 @@
+{% extends 'template_base.html' %}
+
+{% block title %}
+    Clima en {{ ciudad }}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Clima de {{ ciudad }}</h1>
+        
+        {% if clima_actual %}
+            <div class="alert alert-info">
+                <h4>Temperatura actual: {{ clima_actual.temperature }}°C</h4>
+                <p>Velocidad del viento: {{ clima_actual.windspeed }} km/h</p>
+            </div>
+        {% else %}
+            <div class="alert alert-danger">
+                <p>No se pudo obtener el clima para esta ciudad.</p>
+            </div>
+        {% endif %}
+        
+        <a href="/" class="btn btn-primary">Volver a la lista de ciudades</a>
+    </div>
+{% endblock %}
